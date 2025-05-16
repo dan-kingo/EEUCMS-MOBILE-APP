@@ -9,7 +9,9 @@ export default function Index() {
         alignItems: "center",
       }}
     >
-      <Text>Edit app/index.tsx to edit this screen.</Text>
+      <Text className="text-3xl text-center font-bold">
+        Welcome to EEU Complaint System
+      </Text>
     </View>
   );
 }
