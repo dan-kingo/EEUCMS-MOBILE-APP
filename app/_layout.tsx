@@ -3,6 +3,7 @@ import { StatusBar } from "react-native";
 import { PaperProvider } from "react-native-paper";
 import { darkTheme } from "../theme";
 import { useFonts } from "expo-font";
+import FlashMessage from "react-native-flash-message";
 
 export default function RootLayout() {
   const [fontsLoaded] = useFonts({
@@ -16,6 +17,7 @@ export default function RootLayout() {
 
   return (
     <PaperProvider theme={darkTheme}>
+      <FlashMessage position="top" />
       <StatusBar backgroundColor="#212121" barStyle="light-content" />
       <Stack
         screenOptions={{

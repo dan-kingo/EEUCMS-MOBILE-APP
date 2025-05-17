@@ -19,7 +19,7 @@ const Home = () => {
         <View style={styles.buttonContainer}>
           <Button
             mode="contained"
-            onPress={() => router.push("/login")}
+            onPress={() => router.push("/register")}
             style={styles.primaryButton}
             labelStyle={styles.buttonLabel}
           >
