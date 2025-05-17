@@ -58,49 +58,75 @@ export default function ComplaintForm() {
   };
 
   return (
-    <View style={{ flex: 1, justifyContent: "center", padding: 20, backgroundColor: "#212121" }}>
-      {/* Title */}
-      <Text style={{ fontSize: 26, fontWeight: "bold", color: "#fff", marginBottom: 24, textAlign: "center" }}>
-        Make Complaint
-      </Text>
-
-      {/* Label */}
-      <Text style={{ fontSize: 18, color: "#fff", marginBottom: 8 }}>
-        Complaint Description
-      </Text>
-
-      {/* Textarea */}
-      <TextInput
-        multiline
-        numberOfLines={6}
-        mode="outlined"
-        placeholder="Describe your complaint..."
-        value={description}
-        onChangeText={setDescription}
-        style={{ marginBottom: 20, backgroundColor: "#181818", minHeight: 120 }}
-        textColor="#fff"
-        theme={{ colors: { primary: "#ff784b" } }}
-      />
-
-      {/* File Picker */}
-      <Button
-        mode="contained"
-        onPress={handleFilePick}
-        style={{ marginBottom: 10, backgroundColor: "#c6635a" }}
+    <View style={{ flex: 1, justifyContent: "center", padding: 16, backgroundColor: "#121212" }}>
+      {/* Card Container */}
+      <View
+        style={{
+          backgroundColor: "#1e1e1e",
+          borderRadius: 16,
+          padding: 20,
+          shadowColor: "#000",
+          shadowOffset: { width: 0, height: 2 },
+          shadowOpacity: 0.3,
+          shadowRadius: 4,
+          elevation: 6,
+        }}
       >
-        {file ? `Selected: ${file.name}` : "Pick Supporting File (Optional)"}
-      </Button>
+        {/* Title */}
+        <Text
+          style={{
+            fontSize: 24,
+            fontWeight: "bold",
+            color: "#fff",
+            marginBottom: 20,
+            textAlign: "center",
+          }}
+        >
+          Make Complaint
+        </Text>
 
-      {/* Submit Button */}
-      <Button
-        mode="contained"
-        onPress={onSubmit}
-        loading={isLoading}
-        disabled={isLoading}
-        style={{ backgroundColor: "#ff784b", marginTop: 16 }}
-      >
-        Submit Complaint
-      </Button>
+        {/* Label */}
+        <Text style={{ fontSize: 16, color: "#fff", marginBottom: 8 }}>
+          Complaint Description
+        </Text>
+
+        {/* Textarea */}
+        <TextInput
+          multiline
+          numberOfLines={6}
+          mode="outlined"
+          placeholder="Describe your complaint..."
+          value={description}
+          onChangeText={setDescription}
+          style={{
+            marginBottom: 20,
+            backgroundColor: "#1e1e1e",
+            minHeight: 120,
+          }}
+          textColor="#fff"
+          theme={{ colors: { primary: "#ff784b" } }}
+        />
+
+        {/* File Picker */}
+        <Button
+          mode="contained"
+          onPress={handleFilePick}
+          style={{ marginBottom: 10, backgroundColor: "#c6635a" }}
+        >
+          {file ? `Selected: ${file.name}` : "Pick Supporting File (Optional)"}
+        </Button>
+
+        {/* Submit Button */}
+        <Button
+          mode="contained"
+          onPress={onSubmit}
+          loading={isLoading}
+          disabled={isLoading}
+          style={{ backgroundColor: "#ff784b", marginTop: 16 }}
+        >
+          Submit Complaint
+        </Button>
+      </View>
 
       {/* Flash message container */}
       <FlashMessage position="top" />
