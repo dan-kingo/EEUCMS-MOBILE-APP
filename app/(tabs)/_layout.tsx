@@ -3,6 +3,7 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { useTheme } from 'react-native-paper';
 import { View, Text } from 'react-native';
 import useNotificationStore from '../store/notificationsStore';
+import Chatbot from '../components/chatbot';
 
 export default function TabLayout() {
   const theme = useTheme();
@@ -13,6 +14,8 @@ export default function TabLayout() {
   );
 
   return (
+    <>
+    <Chatbot />
     <Tabs
       screenOptions={({ route }) => ({
         headerShown: false,
@@ -82,5 +85,6 @@ export default function TabLayout() {
       <Tabs.Screen name="profile" />
       <Tabs.Screen name="settings" />
     </Tabs>
+    </>
   );
 }
