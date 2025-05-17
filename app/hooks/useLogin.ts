@@ -32,6 +32,7 @@ const useLogin = () => {
           backgroundColor: "#4BB543",
           color: "#fff",
         });
+        router.push("/(tabs)/home")
 
       } else {
         showMessage({

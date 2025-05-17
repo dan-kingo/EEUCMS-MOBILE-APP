@@ -1,9 +1,10 @@
 import { Stack } from "expo-router";
-import { StatusBar } from "react-native";
+import { StatusBar, View, Platform } from "react-native";
 import { PaperProvider } from "react-native-paper";
 import { darkTheme } from "../theme";
 import { useFonts } from "expo-font";
 import FlashMessage from "react-native-flash-message";
+import * as SystemUI from "expo-system-ui";
 
 export default function RootLayout() {
   const [fontsLoaded] = useFonts({
@@ -15,18 +16,25 @@ export default function RootLayout() {
 
   if (!fontsLoaded) return null;
 
+  // Set bottom navigation bar color (only works on Android)
+  if (Platform.OS === "android") {
+    SystemUI.setBackgroundColorAsync("#000000");
+  }
+
   return (
     <PaperProvider theme={darkTheme}>
-      <FlashMessage position="top" />
-      <StatusBar backgroundColor="#212121" barStyle="light-content" />
-      <Stack
-        screenOptions={{
-          headerShown: false,
-          contentStyle: {
-            backgroundColor: "#212121",
-          },
-        }}
-      />
+      <View style={{ flex: 1, backgroundColor: "#181818" }}>
+        <StatusBar backgroundColor="#000000" barStyle="light-content" />
+        <FlashMessage position="top" />
+        <Stack
+          screenOptions={{
+            headerShown: false,
+            contentStyle: {
+              backgroundColor: "#212121",
+            },
+          }}
+        />
+      </View>
     </PaperProvider>
   );
 }
