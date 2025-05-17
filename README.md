@@ -89,3 +89,5 @@ API_BASE_URL=your_api_url
 5. Open a pull request
 
 
+This project is developed with ❤️ by **Dan-Kingo** License.
+
