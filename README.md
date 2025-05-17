@@ -1,50 +1,91 @@
-# Welcome to your Expo app 👋
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+# EEUCMS Mobile App
 
-## Get started
+This is the official mobile application for the **Ethiopian ELectric Utility Complaint Management System (EEUCMS)**. The app allows users to easily make complaints, view complaint history, and manage their profiles. It uses an AI-based backend to classify, route, and escalate complaints for faster resolution.
 
-1. Install dependencies
+## 🚀 Tech Stack
 
-   ```bash
-   npm install
-   ```
+- **Framework**: [Expo](https://expo.dev/) (React Native)
+- **UI Library**: [React Native Paper](https://callstack.github.io/react-native-paper/)
+- **State Management**: [Zustand](https://github.com/pmndrs/zustand)
+- **API**: Axios for backend communication
+- **Toast Messages**: `react-native-flash-message`
 
-2. Start the app
+## 📁 Folder Structure
 
-   ```bash
-   npx expo start
-   ```
-
-In the output, you'll find options to open the app in a
-
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
-
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
-
-```bash
-npm run reset-project
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+app/
+├── tabs/                  # Tab navigation pages
+│   ├── home.tsx
+│   ├── make-complaint.tsx
+│   └── profile.tsx
+├── login.tsx              # Login screen
+├── register.tsx           # Register screen
+assets/
+├── constants/
+│   └── profileData.ts     # Profile form field definitions
+hooks/
+├── useUpdate.ts           # Profile update logic
+├── useUser.ts             # Fetch and store current user
+store/
+├── userStore.ts           # Zustand user state
+utils/
+├── profileUpdateSchema.ts # Profile validation schema
 
-## Learn more
+````
 
-To learn more about developing your project with Expo, look at the following resources:
+## 🔧 Features
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+- 🔐 Secure login & registration with OTP
+- 📋 Submit complaints with optional file upload
+- 💬 Integrated AI chatbot (planned)
+- 🔎 View and filter complaint history
+- 👤 Edit profile information
+- ☁️ Cloudinary file storage (planned for uploads)
+- 📱 Fully responsive mobile UI with dark mode
 
-## Join the community
+## 🛠️ Installation
 
-Join our community of developers creating universal apps.
+```bash
+# 1. Clone the repo
+git clone https://github.com/dan-kingo/aicms-mobile.git
+cd aicms-mobile
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+# 2. Install dependencies
+npm install
+
+# 3. Start development server
+npx expo start
+````
+
+> ⚠️ Requires Expo CLI and Node.js installed.
+
+## 🔑 Environment Variables
+
+Create a `.env` file with:
+
+```
+API_BASE_URL=your_api_url
+```
+
+> Make sure you use `withCredentials: true` in all axios requests.
+
+## 🧠 Important Design Decisions
+
+* All design tokens (fonts, colors) follow EEUCMS branding:
+
+  * Primary: `#ff784b`
+  * Secondary: `#c6635a`
+  * Background: `#121212`
+  * Font: `Palanquin`
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feat/your-feature`)
+3. Commit your changes (`git commit -m 'Add some feature'`)
+4. Push to the branch (`git push origin feat/your-feature`)
+5. Open a pull request
+
+
