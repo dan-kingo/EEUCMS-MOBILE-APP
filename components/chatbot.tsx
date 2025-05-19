@@ -134,7 +134,7 @@ const styles = StyleSheet.create({
   },
   modalContainer: {
     flex: 1,
-    paddingTop: 60,
+    paddingTop: 10,
     paddingHorizontal: 16,
   },
   header: {

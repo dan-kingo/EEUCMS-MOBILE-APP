@@ -16,13 +16,11 @@ const ProfileScreen = () => {
     <ScrollView contentContainerStyle={styles.container}>
       {/* Profile Image Placeholder */}
       <View style={styles.imagePlaceholderContainer}>
-        
         <View style={styles.placeholderCircle}>
           <Text style={styles.placeholderText}>
             {user?.firstName?.[0]?.toUpperCase() || "U"}
           </Text>
         </View>
-        
       </View>
 
       {/* Profile Header */}
@@ -40,7 +38,7 @@ const ProfileScreen = () => {
             <TextInput
               label={fieldData.label}
               placeholder={fieldData.placeholder}
-              value={formData[fieldData.name as keyof typeof formData] || ""}
+              value={formData[fieldData.name as keyof typeof formData] !== undefined ? String(formData[fieldData.name as keyof typeof formData]) : ""}
               onChangeText={(text) =>
                 onChange(fieldData.name as keyof typeof formData, text)
               }
@@ -94,11 +92,6 @@ const styles = StyleSheet.create({
     marginTop: 32,
     alignItems: "center",
     marginBottom: 16,
-  },
-  profileImage: {
-    width: 100,
-    height: 100,
-    borderRadius: 50,
   },
   placeholderCircle: {
     width: 100,
