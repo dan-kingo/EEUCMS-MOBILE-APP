@@ -1,20 +1,15 @@
-import React, { useEffect } from "react";
-import { View, TouchableOpacity } from "react-native";
-import { Text, Button, Card, Divider } from "react-native-paper";
-import { formatDistanceToNow } from "date-fns";
-import { useNavigation } from "@react-navigation/native";
-import { FlashList } from "@shopify/flash-list";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { FlashList } from "@shopify/flash-list";
+import { formatDistanceToNow } from "date-fns";
 import { useRouter } from "expo-router";
-import useNotificationStore from "../store/notificationsStore";
-const router = useRouter()
+import React, { useEffect } from "react";
+import { TouchableOpacity, View } from "react-native";
+import { Button, Card, Divider, Text } from "react-native-paper";
+import useNotificationStore from "../../store/notificationsStore";
+const router = useRouter();
 const NotificationScreen = () => {
-  const {
-    notifications,
-    fetchNotifications,
-    markAsRead,
-    markAllAsRead,
-  } = useNotificationStore();
+  const { notifications, fetchNotifications, markAsRead, markAllAsRead } =
+    useNotificationStore();
 
   useEffect(() => {
     fetchNotifications();
@@ -43,7 +38,11 @@ const NotificationScreen = () => {
         }}
       >
         <View style={{ flexDirection: "row", alignItems: "center" }}>
-          <MaterialCommunityIcons name="bell-outline" size={24} color="#ff784b" />
+          <MaterialCommunityIcons
+            name="bell-outline"
+            size={24}
+            color="#ff784b"
+          />
           <Text style={{ color: "#f2f2f2", fontSize: 20, marginLeft: 8 }}>
             Notifications
           </Text>
@@ -57,7 +56,11 @@ const NotificationScreen = () => {
             textColor="#ff784b"
             style={{ paddingVertical: 0 }}
             icon={() => (
-              <MaterialCommunityIcons name="check-all" size={16} color="#ff784b" />
+              <MaterialCommunityIcons
+                name="check-all"
+                size={16}
+                color="#ff784b"
+              />
             )}
           >
             Mark all as read

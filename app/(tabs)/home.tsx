@@ -1,13 +1,15 @@
-import React, { useState } from "react";
-import { View, Text } from "react-native";
-import { Button, TextInput } from "react-native-paper";
 import * as DocumentPicker from "expo-document-picker";
+import React, { useState } from "react";
+import { Text, View } from "react-native";
 import FlashMessage, { showMessage } from "react-native-flash-message";
-import useComplaint from "../hooks/useComplaint";
+import { Button, TextInput } from "react-native-paper";
+import useComplaint from "../../hooks/useComplaint";
 
 export default function ComplaintForm() {
   const [description, setDescription] = useState("");
-  const [file, setFile] = useState<DocumentPicker.DocumentPickerAsset | null>(null);
+  const [file, setFile] = useState<DocumentPicker.DocumentPickerAsset | null>(
+    null
+  );
   const { submitComplaint, isLoading } = useComplaint();
 
   const handleFilePick = async () => {
@@ -58,7 +60,14 @@ export default function ComplaintForm() {
   };
 
   return (
-    <View style={{ flex: 1, justifyContent: "center", padding: 16, backgroundColor: "#121212" }}>
+    <View
+      style={{
+        flex: 1,
+        justifyContent: "center",
+        padding: 16,
+        backgroundColor: "#121212",
+      }}
+    >
       {/* Card Container */}
       <View
         style={{

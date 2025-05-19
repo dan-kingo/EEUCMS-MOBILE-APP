@@ -1,9 +1,9 @@
-import React, { useState } from "react";
-import { View, StyleSheet, ScrollView } from "react-native";
-import { TextInput, Button, Text } from "react-native-paper";
 import { useRouter } from "expo-router";
-import useLogin from "./hooks/useLogin";
+import React, { useState } from "react";
+import { ScrollView, StyleSheet, View } from "react-native";
 import { showMessage } from "react-native-flash-message";
+import { Button, Text, TextInput } from "react-native-paper";
+import useLogin from "../hooks/useLogin";
 
 export default function LoginForm() {
   const router = useRouter();
@@ -79,7 +79,10 @@ export default function LoginForm() {
 
       <Text style={styles.registerText}>
         Don't have an account?{" "}
-        <Text onPress={() => router.push("/register")} style={styles.registerLink}>
+        <Text
+          onPress={() => router.push("/register")}
+          style={styles.registerLink}
+        >
           Register
         </Text>
       </Text>

@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import { View, StyleSheet } from "react-native";
-import { Button, TextInput, Text } from "react-native-paper";
+import { StyleSheet, View } from "react-native";
 import { showMessage } from "react-native-flash-message";
-import useForgotPassword from "./hooks/useForgotPassword";
+import { Button, Text, TextInput } from "react-native-paper";
+import useForgotPassword from "../hooks/useForgotPassword";
 
 const ForgotPassword = () => {
   const { requestPasswordReset, isLoading } = useForgotPassword();

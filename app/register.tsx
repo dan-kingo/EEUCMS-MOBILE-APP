@@ -1,12 +1,12 @@
-import React, { useState } from "react";
-import { View, StyleSheet, ScrollView } from "react-native";
-import { TextInput, Button, Text } from "react-native-paper";
-import { useRouter } from "expo-router";
 import useRegisterForm from "@/assets/constants/registerData";
-import useRegister from "./hooks/useRegister";
-import registerSchema, { registerFormData } from "./utils/registerFormSchema";
-import { z } from "zod";
+import { useRouter } from "expo-router";
+import React, { useState } from "react";
+import { ScrollView, StyleSheet, View } from "react-native";
 import { showMessage } from "react-native-flash-message";
+import { Button, Text, TextInput } from "react-native-paper";
+import { z } from "zod";
+import useRegister from "../hooks/useRegister";
+import registerSchema, { registerFormData } from "../utils/registerFormSchema";
 
 export default function RegisterScreen() {
   const router = useRouter();
@@ -23,7 +23,9 @@ export default function RegisterScreen() {
     confirmPassword: "",
   });
 
-  const [formErrors, setFormErrors] = useState<Partial<Record<keyof registerFormData, string>>>({});
+  const [formErrors, setFormErrors] = useState<
+    Partial<Record<keyof registerFormData, string>>
+  >({});
 
   const handleChange = (name: keyof registerFormData, value: string) => {
     setFormValues((prev) => ({ ...prev, [name]: value }));
@@ -75,13 +77,17 @@ export default function RegisterScreen() {
             mode="outlined"
             placeholder={item.placeholder}
             value={formValues[item.name as keyof registerFormData]}
-            onChangeText={(value) => handleChange(item.name as keyof registerFormData, value)}
+            onChangeText={(value) =>
+              handleChange(item.name as keyof registerFormData, value)
+            }
             secureTextEntry={item.type === "password"}
             style={styles.input}
             theme={{ colors: { text: "#f2f2f2" } }}
           />
           {formErrors[item.name as keyof registerFormData] && (
-            <Text style={styles.error}>{formErrors[item.name as keyof registerFormData]}</Text>
+            <Text style={styles.error}>
+              {formErrors[item.name as keyof registerFormData]}
+            </Text>
           )}
         </View>
       ))}

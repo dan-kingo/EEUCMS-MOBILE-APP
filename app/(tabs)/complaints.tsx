@@ -1,14 +1,17 @@
 import React, { useState } from "react";
-import { View, FlatList, Text, StyleSheet, TextInput } from "react-native";
-import { Card, Title, ActivityIndicator } from "react-native-paper";
-import { showMessage } from "react-native-flash-message";
-import CustomDialogComponent, { Complaint } from "../components/CustomDialogComponent";
-import CustomTable from "../components/CustomTable";
-import { useUserComplaints } from "../hooks/useUserComplaints";
+import { StyleSheet, TextInput, View } from "react-native";
+import { ActivityIndicator, Card } from "react-native-paper";
+import { useUserComplaints } from "../../hooks/useUserComplaints";
+import CustomDialogComponent, {
+  Complaint,
+} from "../../components/CustomDialogComponent";
+import CustomTable from "../../components/CustomTable";
 
 export default function ComplaintHistory() {
   const [searchTerm, setSearchTerm] = useState("");
-  const [selectedComplaint, setSelectedComplaint] = useState<Complaint | null>(null);
+  const [selectedComplaint, setSelectedComplaint] = useState<Complaint | null>(
+    null
+  );
 
   const { complaints, loading } = useUserComplaints();
 

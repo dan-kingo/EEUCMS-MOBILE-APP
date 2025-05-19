@@ -1,26 +1,37 @@
 import React from "react";
 import { ScrollView, View } from "react-native";
-import { Text, Button, Divider } from "react-native-paper";
-import ChangePassword from "../components/ChangePassword";
-import useLogout from "../hooks/useLogout";
-import DeleteAccount from "../components/DeleteAccount";
-import ContactForm from "../components/ContactForm";
+import { Button, Divider, Text } from "react-native-paper";
+import useLogout from "../../hooks/useLogout";
+import ChangePassword from "../../components/ChangePassword";
+import ContactForm from "../../components/ContactForm";
+import DeleteAccount from "../../components/DeleteAccount";
 
 const SettingsScreen = () => {
   const { isLoading, logoutUser } = useLogout();
 
   return (
     <ScrollView
-      style={{ flex: 1, backgroundColor: "#121212", paddingHorizontal: 2, paddingVertical: 24 }}
+      style={{
+        flex: 1,
+        backgroundColor: "#121212",
+        paddingHorizontal: 2,
+        paddingVertical: 24,
+      }}
       contentContainerStyle={{ paddingBottom: 48 }} // <-- added bottom padding
     >
-      <Text variant="titleLarge" style={{ color: "#f2f2f2", marginBottom: 16, marginLeft: 16 }}>
+      <Text
+        variant="titleLarge"
+        style={{ color: "#f2f2f2", marginBottom: 16, marginLeft: 16 }}
+      >
         Settings & Privacy
       </Text>
 
       {/* Change Password Section */}
       <View>
-        <Text variant="titleMedium" style={{ marginBottom: 12, marginLeft: 16 }}>
+        <Text
+          variant="titleMedium"
+          style={{ marginBottom: 12, marginLeft: 16 }}
+        >
           Change Password Settings
         </Text>
         <ChangePassword />
@@ -28,7 +39,10 @@ const SettingsScreen = () => {
 
       {/* Contact Support Section */}
       <View>
-        <Text variant="titleMedium" style={{ marginBottom: 12,marginLeft: 16 }}>
+        <Text
+          variant="titleMedium"
+          style={{ marginBottom: 12, marginLeft: 16 }}
+        >
           Contact Support
         </Text>
         <ContactForm />
@@ -36,11 +50,14 @@ const SettingsScreen = () => {
 
       {/* Account Actions Section */}
       <View>
-        <Text variant="titleMedium" style={{ marginBottom: 12,marginLeft: 16 }}>
+        <Text
+          variant="titleMedium"
+          style={{ marginBottom: 12, marginLeft: 16 }}
+        >
           Account Actions
         </Text>
         <DeleteAccount />
-        <Divider style={{ marginVertical: 12 , marginHorizontal:16}} />
+        <Divider style={{ marginVertical: 12, marginHorizontal: 16 }} />
         <Button
           mode="contained"
           onPress={logoutUser}

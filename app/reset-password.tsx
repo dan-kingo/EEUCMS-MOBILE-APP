@@ -1,7 +1,7 @@
 import React from "react";
-import { StyleSheet, KeyboardAvoidingView, Platform } from "react-native";
-import { Card, Title, TextInput, Button } from "react-native-paper";
-import useResetPassword from "./hooks/useResetPassword";
+import { KeyboardAvoidingView, Platform, StyleSheet } from "react-native";
+import { Button, Card, TextInput, Title } from "react-native-paper";
+import useResetPassword from "../hooks/useResetPassword";
 
 const ResetPassword = () => {
   const {

@@ -3,8 +3,8 @@ import { useRouter } from "expo-router";
 import React from "react";
 import { ScrollView, StyleSheet, Text, View } from "react-native";
 import { Button, TextInput } from "react-native-paper";
-import useUpdate from "../hooks/useUpdate";
-import useUserStore from "../store/userStore";
+import useUpdate from "../../hooks/useUpdate";
+import useUserStore from "../../store/userStore";
 
 const ProfileScreen = () => {
   const user = useUserStore((state) => state.user);

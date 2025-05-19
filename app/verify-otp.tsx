@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import { View, StyleSheet } from "react-native";
-import { Card, Text, TextInput, Button } from "react-native-paper";
+import { StyleSheet, View } from "react-native";
 import { showMessage } from "react-native-flash-message";
-import useRegister from "./hooks/useRegister";
+import { Button, Card, Text, TextInput } from "react-native-paper";
+import useRegister from "../hooks/useRegister";
 
 const OTPVerification = () => {
   const [otp, setOtp] = useState("");
