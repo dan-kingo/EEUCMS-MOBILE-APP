@@ -1,21 +1,25 @@
+import { BlurView } from "expo-blur";
 import { useRouter } from "expo-router";
 import React, { useState } from "react";
 import {
   Dimensions,
   Image,
+  ImageBackground,
   StyleSheet,
   TouchableOpacity,
   View,
 } from "react-native";
 import { Button, Card, Text } from "react-native-paper";
 import Carousel from "react-native-reanimated-carousel";
-const { width: screenWidth } = Dimensions.get("window");
+// @ts-ignore
+import BackgroundImg from "../assets/images/bgImg.jpg"
 
+const { width: screenWidth } = Dimensions.get("window");
 const slides = [
   {
     title: "Welcome to EEU Complaint System",
     subtitle: "Submit, track, and resolve complaints right now!",
-    image: "https://www.google.com/url?sa=i&url=https%3A%2F%2Fcommons.wikimedia.org%2Fwiki%2FFile%3AIcons8_flat_flash_on.svg&psig=AOvVaw15M-J1C3advyuoGoUQDiZt&ust=1747721229083000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCNDAvvruro0DFQAAAAAdAAAAABA", // customer service
+    image: "https://eeucms.netlify.app/AI_brain-removebg-preview-Ds5uPSQU.png"
   },
   {
     title: "AI-Powered Categorization",
@@ -46,42 +50,43 @@ const Home = () => {
 
   const renderItem = ({ item, index }: any) => {
     if (item.type === "cta") {
-  return (
-    <Card style={[styles.card, styles.ctaSlide]} key={index}>
-      <Card.Content style={styles.ctaContentColumn}>
-        <Text style={styles.ctaTitle}>Ready to get started?</Text>
+      return (
+        <Card style={[styles.card, styles.ctaSlide]} key={index}>
+          <Card.Content style={styles.ctaContentColumn}>
+            <Text style={styles.ctaTitle}>Ready to get started?</Text>
 
-        <View style={styles.ctaRow}>
-          <Text style={styles.ctaSubtitle}>Create an account now</Text>
-          <Button
-            mode="text"
-            onPress={() => router.push("/register")}
-            labelStyle={styles.linkButtonLabel}
-            compact
-          >
-            Register here
-          </Button>
-        </View>
+            <View style={styles.ctaRow}>
+              <Text style={styles.ctaSubtitle}>Create an account now</Text>
+              <Button
+                mode="text"
+                onPress={() => router.push("/register")}
+                labelStyle={styles.linkButtonLabel}
+                compact
+              >
+                Register here
+              </Button>
+            </View>
 
-        <View style={styles.learnMoreContainer}>
-          <Text style={styles.learnText}>Do you wanna learn more?</Text>
-          <TouchableOpacity onPress={() => router.push("https://eeucms.netlify.app/faqs")}>
-            <Text style={styles.learnLink}> Click here</Text>
-          </TouchableOpacity>
-        </View>
+            <View style={styles.learnMoreContainer}>
+              <Text style={styles.learnText}>Do you wanna learn more?</Text>
+              <TouchableOpacity
+                onPress={() => router.push("https://eeucms.netlify.app/faqs")}
+              >
+                <Text style={styles.learnLink}> Click here</Text>
+              </TouchableOpacity>
+            </View>
 
-        {/* New Login Prompt */}
-        <View style={styles.loginPromptContainer}>
-          <Text style={styles.learnText}>Already have an account?</Text>
-          <TouchableOpacity onPress={() => router.push("/login")}>
-            <Text style={styles.learnLink}> Login here</Text>
-          </TouchableOpacity>
-        </View>
-      </Card.Content>
-    </Card>
-  );
-}
-
+            {/* New Login Prompt */}
+            <View style={styles.loginPromptContainer}>
+              <Text style={styles.learnText}>Already have an account?</Text>
+              <TouchableOpacity onPress={() => router.push("/login")}>
+                <Text style={styles.learnLink}> Login here</Text>
+              </TouchableOpacity>
+            </View>
+          </Card.Content>
+        </Card>
+      );
+    }
 
     return (
       <Card style={[styles.card, { position: "relative" }]} key={index}>
@@ -95,41 +100,47 @@ const Home = () => {
   };
 
   return (
-    <View style={styles.container}>
-      {/* Skip Button */}
-      <TouchableOpacity
-        onPress={() => router.push("/register")}
-        style={styles.skipButton}
-      >
-        <Text style={styles.skipButtonText}>Skip</Text>
-      </TouchableOpacity>
+    <ImageBackground
+      source= {BackgroundImg}
+      style={styles.backgroundImage}
+      resizeMode="cover"
+    >
+      <BlurView intensity={50} tint="dark" style={StyleSheet.absoluteFill} />
 
-      {/* Center Carousel Vertically */}
-      <View style={styles.carouselWrapper}>
-        <Carousel
-          data={slides}
-          width={screenWidth}
-          height={250}
-          onSnapToItem={(index) => setActiveSlide(index)}
-          renderItem={renderItem}
-          scrollAnimationDuration={500}
-          loop={false}
-        />
-
-        {/* Progress Bar */}
-        <View style={styles.progressContainer}>
-          {slides.map((_, index) => (
-            <View
-              key={index}
-              style={[
-                styles.progressBar,
-                activeSlide === index && styles.activeProgressBar,
-              ]}
-            />
-          ))}
+      <View style={styles.container}>
+        {/* Skip Button */}
+        <TouchableOpacity
+          onPress={() => router.push("/register")}
+          style={styles.skipButton}
+        >
+          <Text style={styles.skipButtonText}>Skip</Text>
+        </TouchableOpacity>
+        {/* Center Carousel Vertically */}
+        <View style={styles.carouselWrapper}>
+          <Carousel
+            data={slides}
+            width={screenWidth}
+            height={250}
+            onSnapToItem={(index) => setActiveSlide(index)}
+            renderItem={renderItem}
+            scrollAnimationDuration={500}
+            loop={false}
+          />
+          {/* Progress Bar */}
+          <View style={styles.progressContainer}>
+            {slides.map((_, index) => (
+              <View
+                key={index}
+                style={[
+                  styles.progressBar,
+                  activeSlide === index && styles.activeProgressBar,
+                ]}
+              />
+            ))}
+          </View>
         </View>
       </View>
-    </View>
+    </ImageBackground>
   );
 };
 
@@ -138,7 +149,6 @@ export default Home;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#212121",
     paddingTop: 68,
   },
   skipButton: {
@@ -200,12 +210,12 @@ const styles = StyleSheet.create({
     marginTop: 16,
   },
   loginPromptContainer: {
-  flexDirection: "row",
-  justifyContent: "center",
-  alignItems: "center",
-  flexWrap: "wrap",
-  marginTop: 8,
-},
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
+    flexWrap: "wrap",
+    marginTop: 8,
+  },
 
   progressBar: {
     width: 30,
@@ -217,6 +227,13 @@ const styles = StyleSheet.create({
   activeProgressBar: {
     backgroundColor: "#ff784b",
   },
+  backgroundImage: {
+    flex: 1,
+    width: "100%",
+    height: "100%",
+    justifyContent: "center",
+  },
+
   ctaSlide: {
     height: 250,
     justifyContent: "center",
